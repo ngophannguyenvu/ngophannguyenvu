@@ -1,7 +1,7 @@
 ## Hi there 👋
 
 <!--
-**ngophannguyenvu/ngophannguyenvu** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**cnpm/cnpm** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 

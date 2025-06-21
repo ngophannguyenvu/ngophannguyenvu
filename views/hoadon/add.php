@@ -93,7 +93,7 @@ hdAddForm.onsubmit = function(e) {
     e.preventDefault();
     hdAddMsg.textContent = 'Đang xử lý...';
     hdAddMsg.className = 'hd-msg';
-    fetch('http://localhost:86/cnpm-BE/api/hoadonvathanhtoan', {
+    fetch('http://localhost:81/ngophannguyenvu/api/hoadonvathanhtoan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

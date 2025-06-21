@@ -111,7 +111,7 @@ document.getElementById('dl-add-form').onsubmit = function(e) {
     }
 
     // Gửi API POST
-    fetch('http://localhost:86/cnpm-BE/api/datlich', {
+    fetch('http://localhost:81/ngophannguyenvu/api/datlich', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -144,7 +144,7 @@ document.getElementById('dl-add-form').onsubmit = function(e) {
 
 
     // Gửi API POST
-    fetch('http://localhost:86/cnpm-BE/api/datlich', {
+    fetch('http://localhost:81/ngophannguyenvu/api/datlich', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

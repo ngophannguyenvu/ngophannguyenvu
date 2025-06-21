@@ -110,7 +110,7 @@ qcEditForm.onsubmit = function(e) {
     e.preventDefault();
     qcEditMsg.textContent = 'Đang xử lý...';
     qcEditMsg.className = 'qc-msg';
-    fetch('http://localhost:86/cnpm-BE/api/quangcao/' + qcEditForm.maqc.value, {
+    fetch('http://localhost:81/ngophannguyenvu/api/quangcao/' + qcEditForm.maqc.value, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
