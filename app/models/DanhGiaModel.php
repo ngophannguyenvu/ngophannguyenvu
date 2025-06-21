@@ -9,11 +9,24 @@ $this->conn = $db;
 } 
 public function getDanhGias() 
 { 
-$query = "SELECT dg.MaDG, dg.Danhgiasao, dg.Nhanxet, dg.Ngaydanhgia, dg.Manguoidung, dg.MaHD FROM " . $this->table_name . " dg ";
-$stmt = $this->conn->prepare($query); 
-$stmt->execute(); 
-$result = $stmt->fetchAll(PDO::FETCH_OBJ); 
-return $result; 
+    $query = "SELECT 
+                dg.MaDG, 
+                dg.Danhgiasao, 
+                dg.Nhanxet, 
+                dg.Ngaydanhgia,
+                u.Hoten,
+                u.Email,
+                p.Tenphong
+              FROM " . $this->table_name . " dg
+              LEFT JOIN users u ON dg.Manguoidung = u.Manguoidung
+              LEFT JOIN hoadon_va_thanhtoan hd ON dg.MaHD = hd.MaHD
+              LEFT JOIN phong p ON hd.Maphong = p.Maphong
+              ORDER BY dg.Ngaydanhgia DESC";
+
+    $stmt = $this->conn->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ); 
+    return $result; 
 } 
 public function getDanhGiaById($id) 
 { 
@@ -116,5 +129,29 @@ public function getTotalReviews()
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     return $row['total'] ?? 0;
+}
+
+public function getReviewStats()
+{
+    $stats = [];
+    $query_total = "SELECT COUNT(*) as totalReviews FROM " . $this->table_name;
+    $stmt_total = $this->conn->prepare($query_total);
+    $stmt_total->execute();
+    $totalReviews = $stmt_total->fetch(PDO::FETCH_ASSOC)['totalReviews'] ?? 0;
+    $stats['totalReviews'] = $totalReviews;
+
+    $query_monthly = "SELECT COUNT(*) as newReviews FROM " . $this->table_name . " WHERE MONTH(Ngaydanhgia) = MONTH(CURRENT_DATE()) AND YEAR(Ngaydanhgia) = YEAR(CURRENT_DATE())";
+    $stmt_monthly = $this->conn->prepare($query_monthly);
+    $stmt_monthly->execute();
+    $stats['newReviews'] = $stmt_monthly->fetch(PDO::FETCH_ASSOC)['newReviews'] ?? 0;
+
+    $query_good = "SELECT COUNT(*) as goodReviews FROM " . $this->table_name . " WHERE Danhgiasao >= 4";
+    $stmt_good = $this->conn->prepare($query_good);
+    $stmt_good->execute();
+    $goodReviews = $stmt_good->fetch(PDO::FETCH_ASSOC)['goodReviews'] ?? 0;
+    
+    $stats['goodReviewRate'] = ($totalReviews > 0) ? round(($goodReviews / $totalReviews) * 100) : 0;
+    
+    return $stats;
 }
 } 

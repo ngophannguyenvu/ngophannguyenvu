@@ -9,11 +9,15 @@ $this->conn = $db;
 } 
 public function getChiTietDichVus() 
 { 
-$query = "SELECT ct.MaDL, ct.MaDV FROM " . $this->table_name . " ct ";
-$stmt = $this->conn->prepare($query); 
-$stmt->execute(); 
-$result = $stmt->fetchAll(PDO::FETCH_OBJ); 
-return $result; 
+    $query = "SELECT 
+                dv.Tendichvu AS TenDichVu, 
+                dv.Gia 
+              FROM " . $this->table_name . " ct
+              JOIN DICHVU dv ON ct.MaDV = dv.MaDV";
+    $stmt = $this->conn->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    return $result; 
 } 
 public function getChiTietDichVuById($id) 
 { 
