@@ -122,7 +122,7 @@ function fetchPhong() {
     } else {
         renderRows(_phongData);
     }
-    fetch("http://localhost:86/cnpm-BE/api/phong")
+    fetch("http://localhost:81/ngophannguyenvu/api/phong")
         .then(res => res.json())
         .then(data => {
             _phongData = data;

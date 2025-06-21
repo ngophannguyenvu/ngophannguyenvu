@@ -146,7 +146,7 @@ function fetchQuangCaoList() {
     quangCaoListLoading.style.display = '';
     quangCaoListTable.style.display = 'none';
     quangCaoListMsg.textContent = '';
-    fetch('http://localhost:86/cnpm-BE/api/quangcao')
+    fetch('http://localhost:81/ngophannguyenvu/api/quangcao')
         .then(res => res.json())
         .then(data => {
             _quangCaoData = Array.isArray(data) ? data : (data.data || []);

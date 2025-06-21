@@ -19,10 +19,10 @@ public function getDatLichById($id)
 { 
     $query = "SELECT dl.MaDL, dl.Manguoidung, dl.Thoigiandatlich, dl.Trangthai_ 
     FROM " . $this->table_name . " dl 
-    WHERE dl.MaDL = 1";
+    WHERE dl.MaDL = :id";
 
 $stmt = $this->conn->prepare($query); 
-//$stmt->bindParam(':id', $id); 
+$stmt->bindParam(':id', $id); 
 $stmt->execute(); 
 $result = $stmt->fetch(PDO::FETCH_OBJ);
 return $result;
@@ -96,6 +96,15 @@ public function deleteDatLich($MaDL)
         return true;
     }
     return false;
+}
+
+public function getTotalBookings()
+{
+    $query = "SELECT COUNT(*) as total FROM " . $this->table_name;
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row['total'] ?? 0;
 }
 
 }

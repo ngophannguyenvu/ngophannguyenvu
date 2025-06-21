@@ -93,4 +93,13 @@ public function deleteHoaDonVaThanhToan($MaHD)
     return false;
 }
 
+public function getTotalRevenue()
+{
+    $query = "SELECT SUM(Tongtien) as total FROM " . $this->table_name;
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row['total'] ?? 0;
+}
+
 } 

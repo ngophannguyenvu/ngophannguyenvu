@@ -173,7 +173,7 @@ function loadDatLich() {
     tbody.innerHTML = '<tr><td colspan="5">Đang tải dữ liệu...</td></tr>';
     console.log('Cleared tbody, starting fetch...'); // Debug bước 2
 
-    fetch('http://localhost:86/cnpm-BE/api/datlich')
+    fetch('http://localhost:81/ngophannguyenvu/api/datlich')
         .then(res => {
             console.log('Fetch response status:', res.status); // Debug bước 3
             if (!res.ok) {

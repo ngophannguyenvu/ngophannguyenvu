@@ -105,7 +105,7 @@ document.getElementById('dl-del-confirm').onclick = function() {
     msg.textContent = '';
     msg.className = 'dl-del-msg';
 
-    fetch('http://localhost:86/cnpm-BE/api/datlich/' + encodeURIComponent(madl), {
+    fetch('http://localhost:81/ngophannguyenvu/api/datlich/' + encodeURIComponent(madl), {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
     })

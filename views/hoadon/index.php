@@ -122,8 +122,8 @@ function fetchHoaDon() {
     } else {
         renderRows(_hdData);
     }
-    fetch("http://localhost:86/cnpm-BE/api/hoadonvathanhtoan")
-        .then(res => res.json())
+        fetch("http://localhost:81/ngophannguyenvu/api/hoadonvathanhtoan")
+            .then(res => res.json())
         .then(data => {
             _hdData = data;
             renderRows(data);

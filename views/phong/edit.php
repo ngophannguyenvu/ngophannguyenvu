@@ -98,7 +98,7 @@ phongEditForm.onsubmit = function(e) {
     e.preventDefault();
     phongEditMsg.textContent = 'Đang xử lý...';
     phongEditMsg.className = 'phong-msg';
-    fetch('http://localhost:86/cnpm-BE/api/phong/' + phongEditForm.maphong.value, {
+    fetch('http://localhost:81/ngophannguyenvu/api/phong/' + phongEditForm.maphong.value, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

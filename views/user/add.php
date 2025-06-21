@@ -100,7 +100,7 @@ userAddForm.onsubmit = function(e) {
     e.preventDefault();
     userAddMsg.textContent = 'Đang xử lý...';
     userAddMsg.className = 'user-msg';
-    fetch('http://localhost:86/cnpm-BE/api/user/addUser', {
+    fetch('http://localhost:81/ngophannguyenvu/api/user/addUser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

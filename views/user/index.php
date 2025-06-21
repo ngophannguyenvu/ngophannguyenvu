@@ -148,7 +148,7 @@ function fetchUserList() {
     userListLoading.style.display = '';
     userListTable.style.display = 'none';
     userListMsg.textContent = '';
-    fetch('http://localhost:86/cnpm-BE/api/user')
+    fetch('http://localhost:81/ngophannguyenvu/api/user')
         .then(res => res.json())
         .then(data => {
             _userData = Array.isArray(data) ? data : (data.data || []);

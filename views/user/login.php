@@ -96,7 +96,7 @@ userLoginForm.onsubmit = function(e) {
     e.preventDefault();
     userLoginMsg.textContent = 'Đang xử lý...';
     userLoginMsg.className = 'user-login-msg';
-    fetch('http://localhost:86/cnpm-BE/api/user/login', {
+    fetch('http://localhost:81/ngophannguyenvu/api/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

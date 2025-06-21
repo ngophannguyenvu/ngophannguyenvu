@@ -108,4 +108,13 @@ public function deleteDanhGia($MaDG)
     }
     return false;
 }
+
+public function getTotalReviews()
+{
+    $query = "SELECT COUNT(*) as total FROM " . $this->table_name;
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row['total'] ?? 0;
+}
 } 

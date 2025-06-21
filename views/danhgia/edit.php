@@ -112,7 +112,7 @@ document.getElementById('dg-edit-form').onsubmit = function(e) {
         msg.classList.add('error');
         return;
     }
-    fetch('http://localhost:86/cnpm-BE/api/danhgia/' + encodeURIComponent(madg), {
+    fetch('http://localhost:81/ngophannguyenvu/api/danhgia/' + encodeURIComponent(madg), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ Danhgiasao: danhgiasao, Nhanxet: nhanxet, Ngaydanhgia: ngaydanhgia, Manguoidung: manguoidung, MaHD: mahd })

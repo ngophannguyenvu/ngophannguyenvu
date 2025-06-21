@@ -98,7 +98,7 @@ userRegisterForm.onsubmit = function(e) {
     e.preventDefault();
     userRegisterMsg.textContent = 'Đang xử lý...';
     userRegisterMsg.className = 'user-register-msg';
-    fetch('http://localhost:86/cnpm-BE/api/user/register', {
+    fetch('http://localhost:81/ngophannguyenvu/api/user/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

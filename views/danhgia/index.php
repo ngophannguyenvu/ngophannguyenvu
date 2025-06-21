@@ -124,7 +124,7 @@ function fetchDanhGia() {
     } else {
         renderRows(_dgData);
     }
-    fetch("http://localhost:86/cnpm-BE/api/danhgia")
+    fetch("http://localhost:81/ngophannguyenvu/api/danhgia")
         .then(res => res.json())
         .then(data => {
             _dgData = data;
